@@ -9,16 +9,18 @@ import lombok.Data;
 public class Entregador {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
     @Column(unique = true, nullable = false)
-
     private String cpf;
+
     private String email;
     private String tamanhoCamisa;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
+
 }
